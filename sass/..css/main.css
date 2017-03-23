@@ -122,9 +122,11 @@ header {
   .tables table td input[type="text"] {
     height: 20px;
     text-align: center; }
-.tables .btn-flat {
-  position: relative !important;
-  right: -50% !important; }
+.tables .btn {
+  display: block;
+  position: relative;
+  right: 0px;
+  width: 90px; }
 
 .advanced {
   padding: 12px; }

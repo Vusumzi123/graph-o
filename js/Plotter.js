@@ -1,5 +1,16 @@
 var Plotter = function(vars, can){
   var canvas = new CanvasHead(vars,can);
+  var functions = $('.function-inst').toArray();
+
+
+  this.handleInst = function(currentFunct){
+    functions = $('.function-inst').toArray();
+    for(var i=0;i<functions.length;i++){
+      functions[i].classList.remove( "act" );
+    }
+    currentFunct.addClass('act');
+  };
+
   function Draw(){};
   this.formula="x";
   this.steps;
@@ -16,6 +27,15 @@ var Plotter = function(vars, can){
     this.formula=formula;
     console.log("formula is: "+this.formula);
     return false;
+  };
+
+  this.update = function(){
+    console.log(canvas);
+    console.log(functions);
+    canvas = new CanvasHead(vars,can);
+    functions = $('.function-inst').toArray();
+    console.log(canvas);
+    console.log(functions);
   };
 
 
@@ -79,4 +99,11 @@ var Plotter = function(vars, can){
 
 
   anim();
+}
+
+
+var curve = function(i,vars){
+  this.index=i;
+  this.canvas = "<li class=\"collection-item function-inst\"><a class=\"close-icon\" href=\"#\"><i class=\"fa fa-times-circle\" aria-hidden=\"true\"></i></a><div><form class=\"col s12\"><div class=\"row\"><div class=\"col s2\"><div class=\"cir\" style=\"background-color: #2196F3;\">1</div></div><div class=\"input-field col s6\"><input id=\"formula1\" type=\"text\" class=\"validate\"><label for=\"last_name\">f(x)</label></div><div class=\"formula-name col s8\"><p class=\"formula-name\">formula 1</p></div><div class=\"col s4\"><a class=\"waves-effect waves-teal btn-flat\" id=\"Graficar1\">PLOTT</a></div></div></form></div></li>";
+
 }

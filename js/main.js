@@ -1,3 +1,4 @@
+
 var main = function(vars) {
   var scale = vars.scale;
 
@@ -11,6 +12,17 @@ var main = function(vars) {
   var options = new Options(vars);
   var steps = 1;
   var plotbtn = $("#Graficar1");
+
+
+  function resz(){
+    grid = new Grid(vars ,vars.grid, scale);
+    plotts = new Plotter(vars,vars.plotts[0]);
+    axis = new Axis(vars, vars.canvas);
+    scaleChart();
+    resize.Arrange();
+    grid.drawGrid();
+    axis.drawPlane();
+  };
 
 
   function scaleChart(){
@@ -31,13 +43,23 @@ var main = function(vars) {
     return text;
   };
 
+  function test(){
+    var c1 = new curve(2,vars);
 
+    plotts.update();
+    $("#formula").children(".pannel-containner").children(".collection").append(c1.canvas);
+  };
 
 
   grid.drawGrid();
   axis.drawPlane();
 
+  $('.function-inst').click(function(){plotts.handleInst($(this))});
+
   options.gridOpt.click(function(){grid.isActive(options.gridIsChecked())})
-  window.addEventListener("resize",Arrange);
+  //$(window).resize(resz);
+  $(window).bind('resize',resz);
   plotbtn.click(function(){var formula = getFormula();plotts.plot(formula);});
+
+  test();
 }
