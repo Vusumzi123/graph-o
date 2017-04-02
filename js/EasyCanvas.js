@@ -5,7 +5,7 @@
 
 //Encabezado para facilitar el uso de Canvas
 
-var CanvasHead = function(vars, canvas) {
+var CanvasHead = function(canvas) {
 
 this.canvas= canvas;
 this.ctx = canvas.getContext("2d");
@@ -21,6 +21,15 @@ this.centerH=this.canvas.height/2;
 this.mouseX;
 this.mouseY;
 
+
+this.resizeCanvas=function(width, height){
+  this.canvas.width = width;
+  this.canvas.height = height;
+  this.width=this.canvas.width;
+  this.height=this.canvas.height;
+  this.centerW=this.canvas.width/2;
+  this.centerH=this.canvas.height/2;
+}
 
 
 this.radius = 50.0;

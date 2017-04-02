@@ -1,40 +1,27 @@
 
-var main = function(vars) {
-  var scale = vars.scale;
+var main = function() {
+  var scale = globals.scale;
 
     scaleChart();
 
-
-  var resize = new Arrange(vars);
-  var grid = new Grid(vars ,vars.grid, scale);
-  var plotts = new Plotter(vars,vars.plotts[0]);
-  var axis = new Axis(vars, vars.canvas);
-  var options = new Options(vars);
+  var grid = new Grid(globals.grid, scale);
+  //var plotts = new Plotter(globals.plotts[0]);
+  var axis = new Axis(globals.canvas);
+  var options = new Options();
   var steps = 1;
   var plotbtn = $("#Graficar1");
 
 
   function resz(){
-    grid = new Grid(vars ,vars.grid, scale);
-    plotts = new Plotter(vars,vars.plotts[0]);
-    axis = new Axis(vars, vars.canvas);
+    //grid = new Grid(globals.grid, scale);
+    //plotts = new Plotter(globals.plotts[0]);
+    //axis = new Axis(globals.canvas);
     scaleChart();
-    resize.Arrange();
-    grid.drawGrid();
+    resizePanel();
+    grid.isActive(options.gridIsChecked());
     axis.drawPlane();
   };
 
-
-  function scaleChart(){
-    var h = window.innerHeight-40;
-    var w = window.innerWidth-40;
-    vars.canvas.width=w;
-    vars.canvas.height=h;
-    vars.grid.width=w;
-    vars.grid.height=h;
-    vars.plotts[0].width=w;
-    vars.plotts[0].height=h;
-  };
 
 
   function getFormula(){
@@ -43,23 +30,27 @@ var main = function(vars) {
     return text;
   };
 
-  function test(){
-    var c1 = new curve(2,vars);
-
-    plotts.update();
-    $("#formula").children(".pannel-containner").children(".collection").append(c1.canvas);
-  };
 
 
   grid.drawGrid();
   axis.drawPlane();
 
-  $('.function-inst').click(function(){plotts.handleInst($(this))});
+  $('document').resize(resz);
 
-  options.gridOpt.click(function(){grid.isActive(options.gridIsChecked())})
+  options.gridOpt.click(function(){grid.isActive(options.gridIsChecked())});
   //$(window).resize(resz);
   $(window).bind('resize',resz);
-  plotbtn.click(function(){var formula = getFormula();plotts.plot(formula);});
-
-  test();
+  //plotbtn.click(function(){var formula = getFormula();plotts.plot(formula);});
 }
+
+function scaleChart(){
+  globals.plotts=$('.plotter');
+  var h = window.innerHeight-40;
+  var w = window.innerWidth-40;
+  globals.canvas.width=w;
+  globals.canvas.height=h;
+  globals.grid.width=w;
+  globals.grid.height=h;
+  globals.plotts.attr('width',w);
+  globals.plotts.attr('height',h);
+};

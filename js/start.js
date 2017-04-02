@@ -1,7 +1,9 @@
 console.log("start");
 
+var globals;
+
 $('document').ready(function (){
-  var vars = new Globals();
+   globals = new Globals();
   //console.log(vars);
-  main(vars);
+  main();
 });

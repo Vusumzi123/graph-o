@@ -1,8 +1,9 @@
-var Axis = function(vars, can){
-  var canvas= new CanvasHead(vars,can);
-  var scale=vars.scale;
+var Axis = function(can){
+  var canvas= new CanvasHead(can);
+  var scale=globals.scale;
 
   this.drawPlane = function(){
+  canvas.resizeCanvas(window.innerWidth-40, window.innerHeight-40);
   canvas.stroke('#000');
   canvas.strokeWeight(0.4);
   canvas.line(canvas.centerW,0,canvas.centerW,canvas.height);
@@ -19,7 +20,7 @@ var Axis = function(vars, can){
               if(i>0){
                 canvas.strokeWeight(1);
                 canvas.fill("black");
-                canvas.text(-i/scale, canvas.centerW-11, canvas.centerH+i,12);
+                canvas.text(-i/scale, canvas.centerW-22, canvas.centerH+i,12);
                 canvas.text(i/scale, canvas.centerW+11, canvas.centerH-i,12);
                 canvas.text(i/scale, canvas.centerW+i, canvas.centerH+14,12);
                 canvas.text(-i/scale, canvas.centerW-i, canvas.centerH-8,12);

@@ -51,6 +51,12 @@ var Queue = function(){
       return str;
     }else return "{}";
   };
+
+  this.del = function(index){
+    if(this.elements!=null){
+      this.elements.splice(index,1);
+    }
+  };
 }
 
 

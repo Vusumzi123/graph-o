@@ -1,13 +1,14 @@
-var Grid = function(vars, can){
-  this.canvas = new CanvasHead(vars,can);
-  this.scale = vars.scale;
+var Grid = function(can){
+  this.canvas = new CanvasHead(can);
+  this.scale = globals.scale;
 
   this.drawGrid = function(){
+    this.canvas.resizeCanvas(window.innerWidth-40, window.innerHeight-40);
     this.canvas.fill("#999");
     this.canvas.stroke("#999");
     this.canvas.strokeWeight(0.2);
 
-    console.log("scale: "+this.scale);
+    //console.log("scale: "+this.scale);
 
     for(var i=0; i<((this.canvas.width/this.scale)/2); ++i){
       this.canvas.line(this.canvas.centerW+i*this.scale,0,this.canvas.centerW+i*this.scale,this.canvas.height);
@@ -23,5 +24,5 @@ var Grid = function(vars, can){
     if(check===true){
       this.drawGrid();
     }else this.canvas.clearCanvas();
-  }
+  };
 }

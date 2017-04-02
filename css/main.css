@@ -92,8 +92,12 @@ header {
     align-items: center;
     margin: 0; }
   .formulas .function-inst .formula-name {
-    display: block !important; }
+    display: block !important;
+    color: #333;
+    vertical-align: middle; }
   .formulas .function-inst .input-field {
+    display: none !important; }
+  .formulas .function-inst .close-icon {
     display: none !important; }
   .formulas .function-inst .btn-flat {
     display: none !important; }
@@ -105,6 +109,8 @@ header {
       display: block !important; }
     .formulas .act .formula-name {
       display: none !important; }
+    .formulas .act .close-icon {
+      display: block !important; }
     .formulas .act i {
       display: block !important; }
     .formulas .act form {

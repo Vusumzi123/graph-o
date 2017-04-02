@@ -52,8 +52,13 @@
     }
     .formula-name{
       display: block !important;
+      color: $text;
+      vertical-align: middle;
     }
     .input-field{
+      display: none !important;
+    }
+    .close-icon{
       display: none !important;
     }
     .btn-flat{
@@ -70,6 +75,9 @@
     }
     .formula-name{
       display: none !important;
+    }
+    .close-icon{
+      display: block !important;
     }
     i{
       display:block !important;
