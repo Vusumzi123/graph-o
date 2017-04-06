@@ -32,10 +32,10 @@ var functions = new Queue;
 var functInstance = function(number){
   this.name="fuction "+ (number+1);
   this.id="funct"+number;
+  this
   this.formula="";
   this.W=window.innerWidth-40;
   this.H=window.innerHeight-40;
-  this.plotts;
   this.index;
   this.color="";
   this.setColor=function(){
@@ -47,8 +47,12 @@ var functInstance = function(number){
   this.isActive = function(active,index){
     return (index==active);
   };
+  this.setPlotter = function(){
+
+  }
   this.plott = function(){
-    var plotts= new Plotter(document.getElementById(this.id), this.color, this.formula);
+    var plotts = new Plotter(document.getElementById(this.id), this.color, this.formula);
+    console.log(plotts.getFormula());
     plotts.plot();
   }
   this.setColor();

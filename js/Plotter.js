@@ -5,13 +5,22 @@ var Plotter = function(can, color, form){
   this.formula;
   this.steps;
   this.scale;
+  this.x;
 
-  this.Plotter=(function(){
+
+  (function(){
+    this.x=0;
     this.steps=0.01;
     this.scale=globals.scale;
     this.formula=form;
     console.log("presition: "+this.steps);
   })();
+
+
+  this.getFormula = function(){
+    console.log(this.formula);
+    return this.formula;
+  };
 
   var setFormula=function(formula){
     this.formula=formula;
@@ -49,7 +58,7 @@ var Plotter = function(can, color, form){
 
   this.plot=function(){
 
-    var x=0;
+    this.x=0;
     canvas.clearCanvas();
     canvas.strokeWeight(3);
     canvas.fill(color);
@@ -57,9 +66,9 @@ var Plotter = function(can, color, form){
 
       Draw = function(){
 
-        canvas.point(canvas.centerW+(x*this.scale),canvas.centerH+funct(this.formula,x)*this.scale);
-        canvas.point(canvas.centerW-(x*this.scale),canvas.centerH+funct(this.formula,-x)*this.scale);
-        x+=this.steps;
+        canvas.point(canvas.centerW+(this.x*this.scale),canvas.centerH+funct(this.formula,this.x)*this.scale);
+        canvas.point(canvas.centerW-(this.x*this.scale),canvas.centerH+funct(this.formula,-this.x)*this.scale);
+        this.x+=this.steps;
       };
   };
 
