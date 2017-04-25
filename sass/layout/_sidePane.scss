@@ -50,6 +50,12 @@
       align-items: center;
       margin: 0;
     }
+    .hid{
+      display: none !important
+    }
+    .show{
+      display: block !important;
+    }
     .formula-name{
       display: block !important;
       color: $text;
@@ -72,6 +78,12 @@
     max-height: auto;
     .input-field{
       display: block !important;
+    }
+    .hid{
+      display: block !important;
+    }
+    .show{
+      display: none !important;
     }
     .formula-name{
       display: none !important;

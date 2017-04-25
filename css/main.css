@@ -91,6 +91,10 @@ header {
     -webkit-align-items: center;
     align-items: center;
     margin: 0; }
+  .formulas .function-inst .hid {
+    display: none !important; }
+  .formulas .function-inst .show {
+    display: block !important; }
   .formulas .function-inst .formula-name {
     display: block !important;
     color: #333;
@@ -107,6 +111,10 @@ header {
     max-height: auto; }
     .formulas .act .input-field {
       display: block !important; }
+    .formulas .act .hid {
+      display: block !important; }
+    .formulas .act .show {
+      display: none !important; }
     .formulas .act .formula-name {
       display: none !important; }
     .formulas .act .close-icon {

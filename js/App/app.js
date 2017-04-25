@@ -30,7 +30,7 @@ app.controller('fucntionsController', function(){
 var functions = new Queue;
 
 var functInstance = function(number){
-  this.name="fuction "+ (number+1);
+  this.name="function "+ (number+1);
   this.id="funct"+number;
   this
   this.formula="";
@@ -38,10 +38,11 @@ var functInstance = function(number){
   this.H=window.innerHeight-40;
   this.index;
   this.color="";
+  this.isConic;
   this.setColor=function(){
     this.color=colors.cycle();
   };
-  this.setFormula=function(formula){
+  this.setFormula=function(){
     this.formula = formula;
   };
   this.isActive = function(active,index){
@@ -53,7 +54,12 @@ var functInstance = function(number){
   this.plott = function(){
     var plotts = new Plotter(document.getElementById(this.id), this.color, this.formula);
     console.log(plotts.getFormula());
-    plotts.plot();
+
+    if(this.isConic){
+      plotts.plottConic();
+    }else{
+      plotts.plott();
+    }
   }
   this.setColor();
 };

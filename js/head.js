@@ -11,6 +11,7 @@ function Globals(){
   this.height;
   this.sidePanne;
   this.scale = 30;
+  this.presition = 0.01;
   this.options;
   this.colors = new Queue;
 

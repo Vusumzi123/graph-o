@@ -90,7 +90,7 @@ var Plotter = function(can, color, form){
     canvas.fill(color);
     canvas.stroke(color);
 
-      this.draw = function(){
+      Draw = function(){
 
         canvas.point(canvas.centerW+(this.x*this.scale),canvas.centerH+funct(this.formula,this.x)*this.scale);
         canvas.point(canvas.centerW-(this.x*this.scale),canvas.centerH+funct(this.formula,-this.x)*this.scale);
@@ -101,6 +101,6 @@ var Plotter = function(can, color, form){
   };
 
   //setFormula(form);
-  anim(this.draw.toString());
+  this.anim();
 
 };
