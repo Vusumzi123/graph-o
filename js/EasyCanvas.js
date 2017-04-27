@@ -5,7 +5,7 @@
 
 //Encabezado para facilitar el uso de Canvas
 
-var CanvasHead = function(canvas) {
+function CanvasHead(canvas) {
 
 this.canvas= canvas;
 this.ctx = canvas.getContext("2d");

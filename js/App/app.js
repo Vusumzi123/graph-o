@@ -32,7 +32,6 @@ var functions = new Queue;
 var functInstance = function(number){
   this.name="function "+ (number+1);
   this.id="funct"+number;
-  this
   this.formula="";
   this.W=window.innerWidth-40;
   this.H=window.innerHeight-40;
@@ -42,18 +41,12 @@ var functInstance = function(number){
   this.setColor=function(){
     this.color=colors.cycle();
   };
-  this.setFormula=function(){
-    this.formula = formula;
-  };
   this.isActive = function(active,index){
     return (index==active);
   };
-  this.setPlotter = function(){
-
-  }
   this.plott = function(){
     var plotts = new Plotter(document.getElementById(this.id), this.color, this.formula);
-    console.log(plotts.getFormula());
+    console.log(plotts);
 
     if(this.isConic){
       plotts.plottConic();

@@ -1,44 +1,57 @@
 
 function Plotter(can, color, form){
+
+  var canvas;
+  this.formula;
+  this.color;
+
+  this.setColor = function(color){
+    this.color = color;
+  };
+
+  this.setCanvas = function(canv){
+    canvas = new CanvasHead(canv);
+  };
+
+  this.setFormula = function(formula){
+    this.formula = formula;
+  };
+
+  this.getFormula = function(){
+    return this.formula;
+  };
+
   this.setCanvas(can);
   this.setColor(color);
   this.setFormula(form);
-
-}
-
-Plotter.inherits(PlotterModel);
-
-Plotter.method('plott',function(){
-  var x = 0;
-
-  console.log("starting plotter...");
-
-  this.canvas.clearCanvas();
-  this.canvas.strokeWeight(3);
-  this.canvas.fill(this.color);
-  this.canvas.stroke(this.color);
-
-  function anim(draw){
-    var draws = draw();
-    draws();
+  var draw = function(){};
+  function anim(){
+    draw();
     window.requestAnimationFrame(anim);
   };
 
-  this.draw = function(){
 
-  //for(var i = 0;i<1000; i++){
-    console.log("x = "+ x + "; y = "+this.funct(x));
-    this.canvas.point(this.canvas.centerW+(x*globals.scale),this.canvas.centerH+this.funct(x)*globals.scale);
-    this.canvas.point(this.canvas.centerW-(x*globals.scale),this.canvas.centerH+this.funct(-x)*globals.scale);
-
-    x+=globals.presition;
+  function funct(formu, x,t){
+   return eval(formu)*(-1);
   };
 
+  this.plott = function(){
+    var x = 0;
+    var formula = this.formula;
 
+    console.log("starting plotter...");
 
+    canvas.clearCanvas();
+    canvas.strokeWeight(3);
+    canvas.fill(this.color);
+    canvas.stroke(this.color);
 
+    draw = function(){
+      canvas.point(canvas.centerW+(x*globals.scale),canvas.centerH+funct(formula, x)*globals.scale);
+      canvas.point(canvas.centerW-(x*globals.scale),canvas.centerH+funct(formula, -x)*globals.scale);
+      x+=globals.presition;
+    };
 
-  console.log(this.draw.toString());
-  //eval("("+this.draw.toString()+")()");
-  new anim(this.draw);
-});
+    anim();
+  };
+};
