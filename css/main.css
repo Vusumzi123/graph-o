@@ -99,6 +99,14 @@ header {
     display: block !important;
     color: #333;
     vertical-align: middle; }
+  .formulas .function-inst .cir {
+    display: -webkit-flex !important;
+    display: flex !important;
+    -webkit-align-items: center !important;
+    align-items: center !important;
+    justify-content: center; }
+    .formulas .function-inst .cir h6 {
+      font-weight: bold; }
   .formulas .function-inst .input-field {
     display: none !important; }
   .formulas .function-inst .close-icon {

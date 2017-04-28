@@ -61,6 +61,16 @@
       color: $text;
       vertical-align: middle;
     }
+    .cir{
+      display: -webkit-flex !important;
+      display: flex !important;
+      -webkit-align-items: center !important;
+      align-items: center !important;
+      justify-content: center;
+      h6{
+        font-weight: bold;
+      }
+    }
     .input-field{
       display: none !important;
     }

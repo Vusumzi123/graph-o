@@ -11,9 +11,12 @@ function Globals(){
   this.height;
   this.sidePanne;
   this.scale = 30;
-  this.presition = 0.01;
+  this.presition = 0.02;
   this.options;
   this.colors = new Queue;
+  this.debug=false;
+  this.colors = pushCollors();
+  this.log;
 
   this.update = function(){
     this.width = $('document').width();
@@ -21,7 +24,6 @@ function Globals(){
   };
 
   this.initGlobals = function() {
-    this.colors = pushCollors();
     this.canvas = document.getElementById('myCanvas');
     this.body = document.body;
     this.width = $('document').width();
@@ -30,8 +32,15 @@ function Globals(){
     this.sidePanne = $(".scrolable-pannel");
     this.plotts= $('.plotter');
     this.options=$('#options');
-    console.log('globals set...');
+    this.debugLog('globals set...');
     return true;
+  };
+
+  this.debugLog = function(message){
+    this.log = this.log + message + "\n";
+    if(this.debug){
+      console.log(message);
+    }
   };
 
   this.initGlobals();

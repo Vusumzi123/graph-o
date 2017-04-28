@@ -31,15 +31,15 @@ function Plotter(can, color, form){
   };
 
 
-  function funct(formu, x,t){
-   return eval(formu)*(-1);
-  };
-
   this.plott = function(){
     var x = 0;
     var formula = this.formula;
+    var x1;
+    var x2;
+    var y1;
+    var y2;
 
-    console.log("starting plotter...");
+    globals.debugLog("starting plotter...");
 
     canvas.clearCanvas();
     canvas.strokeWeight(3);
@@ -47,8 +47,18 @@ function Plotter(can, color, form){
     canvas.stroke(this.color);
 
     draw = function(){
-      canvas.point(canvas.centerW+(x*globals.scale),canvas.centerH+funct(formula, x)*globals.scale);
-      canvas.point(canvas.centerW-(x*globals.scale),canvas.centerH+funct(formula, -x)*globals.scale);
+      x1 = canvas.centerW+(x*globals.scale);
+      x2 = canvas.centerW+((x+globals.presition)*globals.scale);
+      y1 = canvas.centerH+funct(formula, x)*globals.scale;
+      y2 = canvas.centerH+funct(formula, (x+globals.presition))*globals.scale;
+
+      if(distance(x1,x2,y1,y2)<Math.abs(y1)){
+        canvas.line(x1,y1,x2,y2);
+        canvas.line(canvas.centerW-(x*globals.scale),canvas.centerH+funct(formula, -x)*globals.scale,canvas.centerW-((x+globals.presition)*globals.scale),canvas.centerH+funct(formula, -(x+globals.presition))*globals.scale)
+      }
+
+      //canvas.point(canvas.centerW+(x*globals.scale),canvas.centerH+funct(formula, x)*globals.scale);
+      //canvas.point(canvas.centerW-(x*globals.scale),canvas.centerH+funct(formula, -x)*globals.scale);
       x+=globals.presition;
     };
 
